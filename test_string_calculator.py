@@ -12,10 +12,10 @@ class StringCalculatorTest(unittest.TestCase):
         sum = StringCalculator().add("1")
         self.assertEqual(1, sum)
 
-    def test_add_should_sum_list_of_two_numbers(self):
-        sum = StringCalculator().add("1,2")
-        self.assertEqual(3, sum)
-
-    def test_add_should_sum_list_of_more_than_two_numbers(self):
+    def test_add_should_sum_list_of_numbers_separated_by_comma(self):
         sum = StringCalculator().add("1,2,3,4,10")
         self.assertEqual(20, sum)
+
+    def test_add_should_sum_list_of_numbers_separated_by_either_comma_or_newline(self):
+        sum = StringCalculator().add("1\n2,3")
+        self.assertEqual(6, sum)
