@@ -1,14 +1,14 @@
-import re
+from string_input import StringInput
 
 
 class StringCalculator:
-    def add(self, number_string):
-        if not number_string:
+    def add(self, input_string):
+        if not input_string:
             return 0
 
-        def split_by(delimiter):
-            return re.split(delimiter, number_string)
-        return StringCalculator.sum(split_by(',|\n'))
+        parsed_input = StringInput(input_string)
+
+        return StringCalculator.sum(parsed_input.split())
 
     def sum(numbers):
         return sum(map(lambda num: int(num), numbers))
