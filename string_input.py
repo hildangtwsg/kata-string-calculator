@@ -2,6 +2,8 @@ import re
 
 
 class StringInput:
+    DEFAULT_DELIMITER = ',|\n'
+
     def __init__(self, input_string):
         self.input_string = input_string
         self.delimiter, self.number_string = StringInput.parse(input_string)
@@ -20,8 +22,7 @@ class StringInput:
                 return input_string.split('\n')[0].replace('//', '')
 
             return (get_delimiter(), get_number_string())
-        default_delimiter = ',|\n'
-        return (default_delimiter, input_string)
+        return (StringInput.DEFAULT_DELIMITER, input_string)
 
     def split(self):
         return re.split(self.delimiter, self.number_string)

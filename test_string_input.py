@@ -8,13 +8,13 @@ class StringInputTest(unittest.TestCase):
         self.assertEqual('', StringInput('').number_string)
 
     def test_delimiter_should_be_defaulted_to_comma_or_newline_for_empty_input(self):
-        self.assertEqual(',|\n', StringInput('').delimiter)
+        self.assertEqual(StringInput.DEFAULT_DELIMITER, StringInput('').delimiter)
 
     def test_number_string_should_not_be_modified_from_input_string_if_input_not_following_format(self):
         self.assertEqual('1\n2,3', StringInput('1\n2,3').number_string)
 
     def test_delimiter_should_be_defaulted_to_comma_or_newline_if_input_not_following_format(self):
-        self.assertEqual(',|\n', StringInput('1\n2,3').delimiter)
+        self.assertEqual(StringInput.DEFAULT_DELIMITER, StringInput('1\n2,3').delimiter)
 
     def test_parse_should_identify_number_string_if_input_follows_format(self):
         self.assertEqual('1;2;3', StringInput('//;\n1;2;3').number_string)
